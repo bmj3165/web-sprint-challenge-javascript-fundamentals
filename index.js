@@ -17,7 +17,7 @@ myFunction();
 
 //🚀🚀🚀 ⬇️ 📝 Explanation ⬇️ 📝 🚀🚀🚀: 
 
-
+//The nested function can access the variable interal because the nested function is within the window bindingto access the variable.
 
 
 
