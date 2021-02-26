@@ -61,6 +61,7 @@ const zooAnimals = [
   displayNames will be an array of strings, and each string should follow this pattern: "name: {name}, scientific: {scientific name}"
   */
 
+ 
  const displayNames = [];
  function animalNames(item){
   displayNames.push(`name: ${item.animal_name}, scientific: ${item.scientific_name}`);
@@ -78,11 +79,13 @@ const zooAnimals = [
 
   
 
-  function lowerCaseNames(item){
-   return item.animal_name.toLowerCase();
-    }
-    const newZooNames = zooAnimals.map(lowerCaseNames);
-    console.log(newZooNames);
+  function lowerCaseNames(array,key){
+   const newArray = array.map(function(item){
+     return item[key].toLowerCase();
+   });
+   return newArray;
+  }
+    console.log(lowerCaseNames(zooAnimals,'animal_name'));
   
   
   /* 🦁🦁🦁 Request 3: .filter() 🦁🦁🦁
@@ -103,10 +106,13 @@ const zooAnimals = [
   Using USApop find the total population from the zoos array using the .reduce() method. 
   Remember the reduce method takes two arguments: a callback (which itself takes two args - the accumulator and the item), and an initial value for the count.
   */
+  
+ const totalPop = zooAnimals.reduce(function USApop(accumulator,item){
+  return accumulator + item.population;
 
-  function USApop(){
+  },0);
 
-  }
+ console.log(totalPop);
   
   
   // 🦁🦁🦁 Callbacks 🦁🦁🦁  
@@ -213,7 +219,20 @@ class CuboidMakerTwo{
     this.width = cuboidTwo.width;
     this.height = cuboidTwo.height;
   }
+  volume(){
+    return this.length * this.width * this.height;
+  }
+  surfaceArea(){
+    return 2 * (this.length * this.width + this.length * this.height + this.width * this.height);
+  }
 }
+
+const cuboidTwo = new CuboidMakerTwo({
+  'length': 4,
+  'width': 5,
+  'height': 5,
+});
+
 
 
 //🦄🦄🦄 Test your volume and surfaceArea methods by uncommenting the logs below: 🦄🦄🦄
