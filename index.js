@@ -62,13 +62,17 @@ const zooAnimals = [
   */
 
  
- const displayNames = [];
- function animalNames(item){
-  displayNames.push(`name: ${item.animal_name}, scientific: ${item.scientific_name}`);
+ 
+ function animalNames(array){
+   const displayNames = [];
+   array.forEach(function(item){
+  var temp = `name: ${item.animal_name}, scientific: ${item.scientific_name}`;
+  displayNames.push(temp);
+  });
+  return displayNames;
  }
- zooAnimals.forEach(animalNames);
-
- console.log(displayNames);
+ 
+ console.log(animalNames);
   
 
   /* 🦁🦁🦁 Request 2: .map() 🦁🦁🦁
@@ -79,13 +83,13 @@ const zooAnimals = [
 
   
 
-  function lowerCaseNames(array,key){
-   const newArray = array.map(function(item){
-     return item[key].toLowerCase();
+  function lowerCaseNames(array){
+   const lowName = array.map(function(item){
+     return item.animal_name.toLowerCase();
    });
-   return newArray;
+   return lowName;
   }
-    console.log(lowerCaseNames(zooAnimals,'animal_name'));
+    console.log(lowerCaseNames);
   
   
   /* 🦁🦁🦁 Request 3: .filter() 🦁🦁🦁
@@ -93,12 +97,14 @@ const zooAnimals = [
   Using lowPopulationAnimals use .filter() to create a new array of objects which contains only the animals with a population of less than 5.
   */
 
-  function lowPopulationAnimals(item){
-      return item.population < 5;
-    }
-    const lowPop = zooAnimals.filter(lowPopulationAnimals);
+  function lowPopulationAnimals(array){
+      const lowpop = array.filter(function(item){
+        return item.population < 5;
+    });
+    return lowpop;
+  }  
 
-  console.log(lowPop);
+  console.log(lowPopulationAnimals);
   
 
   /* 🦁🦁🦁 Request 4: .reduce() 🦁🦁🦁
@@ -107,12 +113,15 @@ const zooAnimals = [
   Remember the reduce method takes two arguments: a callback (which itself takes two args - the accumulator and the item), and an initial value for the count.
   */
   
- const totalPop = zooAnimals.reduce(function USApop(accumulator,item){
-  return accumulator + item.population;
+  function USApop(array){
+  const newArray = array.reduce(function (accumulator,item){
+    return accumulator + item.population;
 
-  },0);
+    },0);
+    return newArray;
+  }
 
- console.log(totalPop);
+  console.log(USApop);
   
   
   // 🦁🦁🦁 Callbacks 🦁🦁🦁  
